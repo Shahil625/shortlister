@@ -23,6 +23,7 @@ if not os.path.isdir(UPLOAD_FOLDER):
 if not os.path.isdir(DOWNLOAD_FOLDER):
     os.mkdir(DOWNLOAD_FOLDER)
 #Flask app config 
+
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER

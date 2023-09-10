@@ -4,15 +4,19 @@ from txt_to_features import txt_features, feats_reduce
 from extract_entities import get_number, get_email, rm_email, rm_number, get_name, get_skills, get_location
 from model import simil
 import pandas as pd
-#import nltk
+import os
+import app
+# import nltk
 #nltk.download('omw-1.4')
 
 
 if __name__=="__main__":
-    directory = '/home/ayoub/DS/Parser-Shortlisting-Project/Data/'
-    resume_path = '/home/ayoub/DS/Parser-Shortlisting-Project/files/resumes'
+    # directory = 'C:\Users\shalu\Desktop\New folder (4)\Resume-Parser-Shortlisting-Project\Data'
+    directory = os.path.join(app.instance_path) + '/Data'
+    resume_path = os.path.join(app.instance_path)+'files/resumes'
     jd_path = directory + 'JobDesc/'
 
+    
     resumetxt=read_files(resume_path)
     p_resumetxt = preprocess(resumetxt)
 
@@ -34,7 +38,7 @@ if __name__=="__main__":
     dt['Original']=dt['Original'].apply(lambda x: rm_email(x))
     dt['Candidate\'s Name']=dt['Original'].apply(lambda x: get_name(x))
 
-    skills = pd.read_csv('/home/ayoub/DS/Parser-Shortlisting-Project/Data/skill_red.csv')
+    skills = pd.read_csv('C:\Users\shalu\Desktop\New folder (4)\Resume-Parser-Shortlisting-Project\Data\skill_red.csv')
     skills = skills.values.flatten().tolist()
     skill = []
     for z in skills:
